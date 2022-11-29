@@ -1,0 +1,179 @@
+    body {
+        font-family: 'Roboto', 'Noto Sans TC', 'Arial', 'Helvetica', 'sans-serif';
+        background: #eee;
+    }
+    
+    yuchi-icon {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2.5rem;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        /* support for all Webkit browsers */
+        -webkit-font-smoothing: antialiased;
+        /* support for Safari and Chrome */
+        text-rendering: optimizeLegibility;
+        /* support for firefox */
+        -moz-osx-font-smoothing: grayscale;
+    }
+    /**************************************************************** yuchiSlider */
+    
+    #yuchiSlider img {
+        /* 縮放置中裁切 (先把高W-100寬W-100容器vh-100弄好) */
+        object-fit: cover;
+        /* 濾鏡 filter: grayscale(45%); */
+        filter: grayscale(45%);
+    }
+    
+    #yuchiSlider .carousel-caption {
+        text-shadow: 1px 1px 5px #666;
+    }
+    
+    #yuchiSlider .carousel-indicators>button {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        /* transparent 透明 */
+        border: 15px solid transparent;
+    }
+    /**************************************************************** yuchiFooter */
+    
+    #yuchiArrow {
+        right: 5vh;
+        bottom: 5vh;
+        z-index: 999;
+    }
+    /*vertical-align(垂直對齊)*/
+    /* #yuchiArrow i {
+    width: 2rem;
+    font-size: 2rem;
+    vertical-align: -25%;
+  } */
+    
+    #yuchiArrow a {
+        animation: bounce 2s ease infinite;
+    }
+    
+    @keyframes bounce {
+        0%,
+        20%,
+        53%,
+        80%,
+        100% {
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform: translate(0, 0);
+        }
+        40%,
+        43% {
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            transform: translate(0, -30px);
+        }
+        70% {
+            animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+            transform: translate(0, -15px);
+        }
+        90% {
+            transform: translate(0, -4px);
+        }
+    }
+    /************************************************************房型介紹*/
+    
+    #yuchiRoom .nav-link {
+        /* flex基本空間*/
+        flex: 0 1 15%;
+        background-color: #fff3cd;
+        border-color: #ffecb5;
+        color: #82660d;
+        box-shadow: 1px -1px 3px 0px #b0b0b0a8;
+    }
+    
+    #yuchiRoom .nav-link.active {
+        background-color: #fffc10;
+        color: #8f8d88;
+        border: 0;
+    }
+    
+    #yuchiRoom .nav-tabs,
+    #yuchiRoom .nav-link {
+        border-bottom: 1px solid #ffc107;
+    }
+    
+    #yuchiRoom .tab-content>.active {
+        display: flex;
+    }
+    /* #yuchiRoom .tab-content>.row.active {
+        display: flex;
+    } */
+    
+    #roomPrice th,
+    #roomPrice td {
+        /* <div class="w-100 mb-5 text-center"> 取代下面css*/
+        text-align: center;
+        /* <tbody class="align-middle">取代下面 */
+        vertical-align: middle;
+    }
+
+
+    /*******************************************************yuchiFacility */
+    
+    /* @media(min-width:992px){
+        #yuchiFacility li:nth-of-type(even) img{
+            order:1;
+        }
+    } */
+
+    /* 加背景圖 */
+    #yuchiFacility{
+        background: url("../img/top/01.jpg");
+
+        /* 背景置中裁切 */
+        background-size:cover;
+        background-position: center;
+        /* 背景固定 */
+        background-attachment: fixed;
+
+        text-shadow: #333 0.3rem 0.3rem 0.5rem;
+    }
+
+
+    /* yuchiFood **********************************************************/
+
+    #yuchiFood .accordion-button:not(.collapsed) {
+        background: #ffc107;
+        color:white !important;
+    }
+
+
+    #yuchiFood .accordion-button:focus {
+        z-index: 3;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgb(255, 227, 114);
+    }
+
+    #yuchiFood small{
+        /* 轉角度,偏移 */
+        transform: rotate(-20deg) translate(-25%,-25%);
+        /* 標籤最上層 */
+        z-index: 999;
+    }
+
+
+    /* yuchiTrans********************************************************* */
+
+    #yuchiTrans iframe{
+        /* 套濾鏡 */
+        filter: grayscale(50%);
+        filter: brightness(80%);
+    }
+
+
+    /* 轉場 ****************************************************************/
+    /* .nav-link{
+        transition: 1s ease;
+    } */
