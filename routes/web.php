@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index') -> middleware('cors');;
+Route::get('/', 'PostController@index') 
+// -> middleware('cors')
+;
 
 
 Route::group(['prefix' => 'admin'], function () {
