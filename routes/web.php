@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostController@index') -> middleware('cors');;
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-});
+}) -> middleware('cors');

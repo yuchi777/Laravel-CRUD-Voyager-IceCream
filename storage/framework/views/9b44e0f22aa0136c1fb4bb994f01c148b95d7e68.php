@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,14 @@
     
     <link rel="stylesheet" href="<?php echo e(asset('css/custom.css')); ?>">
 
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
+    <!-- JQ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
     
     <!-- 載入icon -->
     <link rel="shortcut icon" href="<?php echo e(asset('assets/img/ice-cream.png')); ?>" type="image/x-icon">
@@ -272,9 +280,11 @@
         <article class="container text-white py-5">
             <!-- list-unstyled 取消ul樣式 "·" -->
             <!-- gy-4垂直甘特 -->
-            <ul class="row list-unstyled gy-4 ">
-                <?php $__currentLoopData = $iceImgs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $iceImg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li class="col-12 col-lg-6">
+            <ul class="row list-unstyled gy-4">
+                <?php $__currentLoopData = $iceImgs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $iceImg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li 
+                    class="col-12 col-lg-6"
+                    data-aos="fade-top" >
                         <div class="row gy-4 align-items-center">
                             <img class="col-sm-6" src="<?php echo e(asset('storage/'. $iceImg->iceCream_img)); ?>" alt="">
                             <div class="col-sm-6">
@@ -397,7 +407,7 @@
             <form class="row py-5 gy-4 text-light " action="">
                 <div class="col-12 col-md-6">
 
-                    <label for="dataUser" class="form-label">訪客姓名</label>
+                    <label for="dataUser" class="form-label">姓名</label>
                     <div class="input-group">
                         <!-- 輸入姓名 -->
                         <input type="text" class="form-control" id="dataUser" name="dataUser" placeholder="Full Name"
@@ -434,8 +444,8 @@
                     <label for="dataQue" class="form-label">問題類型</label>
                     <select class="form-select" id="dataQue" name="dataQue">
                         <option selected>Select menu</option>
-                        <option value="住宿相關">住宿相關</option>
-                        <option value="婚宴訂桌">婚宴訂桌</option>
+                        <option value="住宿相關">訂購相關</option>
+                        <option value="婚宴訂桌">活動相關</option>
                         <option value="其他">其他</option>
                     </select>
                 </div>
@@ -472,6 +482,73 @@
             </a>
         </div>
     </footer>
+    <script>
+        //scroll to id
+        $("#yuchiMenu a, #yuchiArrow a").click(function () {
+          const
+            who = $(this).attr('href'),
+            val = $(who).offset().top - $("#yuchiMenu").innerHeight();
+          $("html").animate({ scrollTop: val }, 1000);
+        });
+    
+        //scroll spy
+        const spy = function () {
+          const nowat = $(window).scrollTop();
+          $("section").each((i, e) => {
+            // console.log(i,e);
+            const
+              id = $(e).attr('id'),
+              offset = $(e).offset().top - $("#yuchiMenu").innerHeight() - 1,
+              height = $(e).innerHeight();
+    
+    
+            if (offset <= nowat && nowat < offset + height) {
+              // console.log(id);
+              $("#yuchiMenu a").removeClass('active');
+              $(`#yuchiMenu a[href='#${id}']`).addClass('active');
+            }
+          });
+        }
+    
+        //check bg menu
+        const bgmenu = function () {
+          const
+            viewWidth = $(window).innerWidth(),
+            nowat = $(window).scrollTop(),
+            height = $("#yuchiSlider").innerHeight(),
+            offset = $("#yuchiMenu").innerHeight() + 1;
+    
+          if (nowat <= height - offset) {  //0~910 若在 首區內
+            $("#yuchiArrow").fadeOut(); //隱藏至頂按鈕
+    
+            if (viewWidth > 767) $("#yuchiMenu").removeClass('bg-dark');  // 大畫面
+            else $("#yuchiMenu").addClass('bg-dark'); // 小畫面
+    
+          } else {  //在其他主題時
+            $("#yuchiMenu").addClass('bg-dark');
+            $("#yuchiArrow").fadeIn();
+          }
+        }
+    
+        //當網頁滾動時
+        $(window).scroll(() => {
+          spy();
+          bgmenu();
+        });
+        //當網頁更改寬度時
+        $(window).resize(bgmenu);
+    
+    
+        spy();
+        bgmenu();
+    
+        ////////////animate
+        AOS.init({
+          duration: 1500,
+          once: true
+        });
+    
+      </script>
 
 </body>
 
