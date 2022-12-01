@@ -116,11 +116,18 @@
 
         <!-- 指示器 -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#yuchiSlider" data-bs-slide-to="0" class="active"></button>
+            {{-- <button type="button" data-bs-target="#yuchiSlider" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#yuchiSlider" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#yuchiSlider" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#yuchiSlider" data-bs-slide-to="3"></button>
-
+            <button type="button" data-bs-target="#yuchiSlider" data-bs-slide-to="3"></button> --}}
+            @foreach($banners as $index => $banner)
+                <button 
+                type="button" 
+                data-bs-target="#yuchiSlider" 
+                data-bs-slide-to="{{$index}}" 
+                class="{{($index == 0) ? 'active':'' }}">
+            </button>
+            @endforeach
         </div>
 
         <!-- 輪播區 -->
