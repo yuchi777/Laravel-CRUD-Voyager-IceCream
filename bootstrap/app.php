@@ -41,9 +41,10 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-// $app->bind('path.public', function() {
-//     return base_path() . '/public_html';
-// });
+//上線主機資料夾名稱為public_html
+$app->bind('path.public', function() {
+    return base_path() . '/public_html';
+});
 
 /*
 |--------------------------------------------------------------------------
