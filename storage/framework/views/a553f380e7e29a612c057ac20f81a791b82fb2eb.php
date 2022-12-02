@@ -1,6 +1,5 @@
 <?php $__env->startSection('content'); ?>
     <div class="login-container">
-
         <p><?php echo e(__('voyager::login.signin_below')); ?></p>
 
         <form action="<?php echo e(route('voyager.login')); ?>" method="POST">
@@ -25,14 +24,13 @@
                     <input type="checkbox" name="remember" id="remember" value="1"><label for="remember" class="remember-me-text"><?php echo e(__('voyager::generic.remember_me')); ?></label>
                 </div>
             </div>
-
+            <div>測試帳號:user@user.com<br>測試密碼:user12345</div>
             <button type="submit" class="btn btn-block login-button">
                 <span class="signingin hidden"><span class="voyager-refresh"></span> <?php echo e(__('voyager::login.loggingin')); ?>...</span>
                 <span class="signin"><?php echo e(__('voyager::generic.login')); ?></span>
             </button>
 
         </form>
-
         <div style="clear:both"></div>
 
         <?php if(!$errors->isEmpty()): ?>
